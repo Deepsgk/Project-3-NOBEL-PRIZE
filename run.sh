@@ -1,0 +1,1 @@
+FLASK_APP=project3nobel/app.py flask run
