@@ -56,3 +56,8 @@ wcwidth @ file:///Users/ktietz/demo/mc3/conda-bld/wcwidth_1629357192024/work
 Werkzeug==2.2.2
 wincertstore==0.2
 zipp==3.8.1
+python-3.9.14
+pip 22.2.2
+setuptools 63.4.3
+wheel 0.37.1
+
