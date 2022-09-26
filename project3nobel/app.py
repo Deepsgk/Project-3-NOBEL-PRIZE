@@ -42,7 +42,7 @@ from .models import ( nobel1_prize,
                      country )
 
 @app.route("/api/v0/nobel1_prize")
-def nobel1_prize():
+def get_nobel1_prize():
     
     results = db.session.query(nobel1_prize.awardyear, nobel1_prize.category, nobel1_prize.categoryfullname,
                                nobel1_prize.sortorder, nobel1_prize.prizeamount, nobel1_prize.motivation, 
@@ -52,7 +52,7 @@ def nobel1_prize():
                                
    
              
-    nobel1_prize = {
+    nobel1_prize_data = {
                 "awardyear"        : [result[0] for result in results],
                 "category"         : [result[1] for result in results],
                 "categoryfullname" : [result[2] for result in results],
@@ -73,18 +73,18 @@ def nobel1_prize():
             }
 
 
-    return Response (nobel1_prize.to_json(orient="records"), mimetype='application/json')
+    return Response (nobel1_prize_data.to_json(orient="records"), mimetype='application/json')
 
 
 @app.route("/api/v0/country")
-def country():
+def get_country_data():
     results = db.session.query(country.id, country.firstname, country.surname, country.borncountry, country.borncountrycode,
                                country.borncity, country.gender, country.year, country.category, country.motivation,
                                country.organization_name, country.organization_city, country.organization_country,
                                country.latitude, country.longitude).all()
                                
     
-    country = {
+    country_data = {
                 "id"              : [result[0] for result in results],
                 "firstname"       : [result[1] for result in results],
                 "surname"         : [result[2] for result in results],
@@ -103,7 +103,7 @@ def country():
                 
             }
 
-    return Response(country.to_json(orient="records"), mimetype='application/json')
+    return Response(country_data.to_json(orient="records"), mimetype='application/json')
 
     
 
