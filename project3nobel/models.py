@@ -36,7 +36,7 @@ class country(db.Model):
     surname          = db.Column(db.String(200))
     borncountry      = db.Column(db.String(100)) 
     borncountry_code  = db.Column(db.String(100)) 
-    borncity         = db.Column(db.String(1000))
+    born_city         = db.Column(db.String(1000))
     gender           = db.Column(db.String(100))
     year             = db.Column(db.Integer)
     category         = db.Column(db.String(50))
