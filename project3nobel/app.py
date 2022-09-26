@@ -34,8 +34,9 @@ db = SQLAlchemy(app)
 
 
 @app.route("/")
-def home():
+def index():
     return render_template('index.html')  
+
 # Route for map
 @app.route("/map")
 def map():
@@ -53,7 +54,7 @@ def app():
 from .models import ( nobel1_prize,
                      country )
 
-@app.route("api/v0/nobel1_prize")
+@app.route("/api/v0/nobel1_prize")
 def nobel1_prize():
     results = db.session.query(nobel1_prize.awardyear, nobel1_prize.category, nobel1_prize.categoryfullname,
                                nobel1_prize.sortorder, nobel1_prize.prizeamount, nobel1_prize.motivation, 
@@ -90,7 +91,7 @@ def nobel1_prize():
 
     return jsonify(list)  
 
-@app.route("api/v0/country")
+@app.route("/api/v0/country")
 def country():
     results = db.session.query(country.id, country.firstname, country.surname, country.borncountry, country.borncountrycode,
                                country.borncity, country.gender, country.year, country.category, country.motivation,

@@ -1,6 +1,5 @@
 from project3nobel.app import db 
 
-
 class nobel1_prize(db.Model):
     __tablename__ = 'nobel1_prize'
     
