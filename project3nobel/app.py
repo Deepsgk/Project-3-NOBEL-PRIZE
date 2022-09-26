@@ -80,8 +80,7 @@ def get_nobel1_prize():
 def get_country_data():
     results = db.session.query(country.id, country.firstname, country.surname, country.borncountry, country.borncountrycode,
                                country.borncity, country.gender, country.year, country.category, country.motivation,
-                               country.organization_name, country.organization_city, country.organization_country,
-                               country.latitude, country.longitude).all()
+                               country.organization_name, country.organization_city, country.organization_country, country.latitude, country.longitude).all()
                                
     
     country_data = {

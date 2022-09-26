@@ -44,8 +44,8 @@ class country(db.Model):
     organization_name  = db.Column(db.String(20))
     organization_city  = db.Column(db.String(100))
     organization_country= db.Column(db.String(100))
-    country_latitude   = db.Column(db.Float)
-    country_longitude   = db.Column(db.Float)
+    latitude   = db.Column(db.Float)
+    longitude   = db.Column(db.Float)
     
 
     
