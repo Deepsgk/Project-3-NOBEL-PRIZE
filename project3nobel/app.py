@@ -7,7 +7,6 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 import pandas as pd
 from flask import Flask, jsonify, render_template, request, url_for, redirect
-from flask_cors import CORS, cross_origin
 import sys
 import psycopg2
 from flask import Response
@@ -19,7 +18,7 @@ import os
 # Flask Setup
 #################################################
 app = Flask(__name__)
-cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+
 #################################################
 # Database Setup
 #################################################
