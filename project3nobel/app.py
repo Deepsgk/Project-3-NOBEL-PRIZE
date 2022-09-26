@@ -42,7 +42,7 @@ from .models import ( nobel1_prize,
                      country )
 
 @app.route("/api/v0/nobelprizewinners")
-def Nobelprize():
+def nobel1_prize():
     results = db.session.query(nobel1_prize.awardyear, nobel1_prize.category, nobel1_prize.categoryfullname,
                                nobel1_prize.sortorder, nobel1_prize.prizeamount, nobel1_prize.motivation, 
                                nobel1_prize.award_link, nobel1_prize.id, nobel1_prize.name, nobel1_prize.fullname, nobel1_prize.gender,
@@ -78,10 +78,11 @@ def Nobelprize():
 
     return jsonify(list)  
 @app.route("/api/v0/country")
-def Country():
+def country():
     results = db.session.query(country.id, country.firstname, country.surname, country.borncountry, country.borncountrycode,
                                country.borncity, country.gender, country.year, country.category, country.motivation,
-                               country.organization_name, country.organization_city, country.organization_country, country.latitude, country.longitude).all()
+                               country.organization_name, country.organization_city, country.organization_country,
+                               country.latitude, country.longitude).all()
                                
     list= []
     dict ={}
