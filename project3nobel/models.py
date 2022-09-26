@@ -1,4 +1,4 @@
-from .app import db
+from project3nobel.app import db 
 
 
 class nobel1_prize(db.Model):
