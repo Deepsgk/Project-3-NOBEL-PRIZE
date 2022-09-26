@@ -50,9 +50,6 @@ def d3():
 def app():
    return render_template("app.html")
 
-@app.route("/p_graph")
-def p_graph():
-   return render_template("p_graph.html")
 
 from .models import ( nobel1_prize,
                      country )
