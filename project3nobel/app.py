@@ -67,7 +67,7 @@ def nobel1_prize():
     for i in range(len(results)):
              
         dict = {
-                "awardyear"        : results[i][0],
+            "awardyear"        : results[i][0],
                 "category"         : results[i][1],
                 "categoryfullname" : results[i][2],
                 "sortorder"        : results[i][3],
@@ -117,7 +117,7 @@ def country():
                 "organization_city" : results[i][11],
                 "organization_country": results[i][12],
                 "latitude"  : results[i][13],
-                "longitude"  : results[i][14],
+                "longitude"  : results[i][14]
                 
             }
 
