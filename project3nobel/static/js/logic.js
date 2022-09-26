@@ -118,7 +118,7 @@ var icons = {
 /* 
  * 
  */
-const url = "/api/v0/country"
+const url = "/api/v0/country";
 d3.json(url).then(
 data => {
 

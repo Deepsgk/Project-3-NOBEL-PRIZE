@@ -162,7 +162,7 @@ function updateToolTipy(chosenYAxis, circlesGroup) {
   return circlesGroup;
 }
 // Retrieve data from the api and execute everything below
-const url= "/api/v0/nobelprizewinners"
+const url= "/api/v0/nobelprizewinners";
 d3.json(url).then(function(nobelData, err) {
   if (err) throw err;
   // parse data
