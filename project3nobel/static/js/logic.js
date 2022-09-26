@@ -118,8 +118,8 @@ var icons = {
 /* 
  * 
  */
-
-d3.json("/country").then(
+var url = "/api/v0/country";
+d3.json(url).then(
 data => {
 
   var sites = data;
