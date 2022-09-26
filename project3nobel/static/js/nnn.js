@@ -25,11 +25,11 @@ var chartGroup = svg.append("g")
 // Initial Xscale Params
 var chosenXAxis = "awardyear";
 // function used for updating x-scale var upon click on axis label
-function xScale(nobelData, chosenXAxis) {
+function xScale(data, chosenXAxis) {
   // create scales
   var xLinearScale = d3.scaleLinear()
-    .domain([d3.min(nobelData, d => d[chosenXAxis]-0.2) ,
-      d3.max(nobelData, d => d[chosenXAxis])
+    .domain([d3.min(data, d => d[chosenXAxis]-0.2) ,
+      d3.max(data, d => d[chosenXAxis])
     ])
     .range([0, width]);
   return xLinearScale;
@@ -173,10 +173,10 @@ d3.json('https://project3nobel.herokuapp.com/api/v0/nobel1_prize').then(function
   });
      
   // xLinearScale function 
-  var xLinearScale = xScale(nobelData, chosenXAxis);
+  var xLinearScale = xScale(data, chosenXAxis);
   
   // Create y scale function
-  var yLinearScale = yScale(nobelData, chosenYAxis);
+  var yLinearScale = yScale(data, chosenYAxis);
 
   // Create initial axis functions & Create bottom(x) and left(y) axis functions
   var bottomAxis = d3.axisBottom(xLinearScale);
@@ -191,7 +191,7 @@ d3.json('https://project3nobel.herokuapp.com/api/v0/nobel1_prize').then(function
     .call(leftAxis);
   // append initial circles
   var circlesGroup = chartGroup.selectAll("circle")
-    .data(nobelData)
+    .data(data)
     .enter()
     .append("circle")
     .attr("cx", d => xLinearScale(d[chosenXAxis]))
@@ -201,7 +201,7 @@ d3.json('https://project3nobel.herokuapp.com/api/v0/nobel1_prize').then(function
     .attr("opacity", ".9");
 //adding text element inside the circle
 var circlestext = chartGroup.selectAll(".stateText")
-                  .data(nobelData)
+                  .data(data)
                   .enter()
                   .append("text")
                   .classed ("stateText", true)
@@ -254,7 +254,7 @@ var circlestext = chartGroup.selectAll(".stateText")
       if (value !== chosenXAxis) {
         // replaces chosenXAxis with value
         chosenXAxis = value;
-        xLinearScale = xScale(nobelData, chosenXAxis);
+        xLinearScale = xScale(data, chosenXAxis);
         // updates x axis with transition
         xAxis = renderAxes(xLinearScale, xAxis);
         // updates circles with new x values
@@ -303,7 +303,7 @@ var circlestext = chartGroup.selectAll(".stateText")
 
         // functions here found above csv import
         // updates y scale for new data
-        yLinearScale = yScale(nobelData, chosenYAxis);
+        yLinearScale = yScale(data, chosenYAxis);
 
         // updates y axis with transition
         yAxis = renderYAxes(yLinearScale, yAxis);
