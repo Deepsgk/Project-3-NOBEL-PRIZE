@@ -162,8 +162,8 @@ function updateToolTipy(chosenYAxis, circlesGroup) {
   return circlesGroup;
 }
 // Retrieve data from the api and execute everything below
-const url = "/api/v0/nobel1_prize";
-d3.json(url).then(function(nobelData, err) {
+
+d3.json("https://project3nobel.herokuapp.com/api/v0/nobel1_prize").then(function(nobelData, err) {
   if (err) throw err;
   // parse data
   nobelData.forEach(function(data) {
