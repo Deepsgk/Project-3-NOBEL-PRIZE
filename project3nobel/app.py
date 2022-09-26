@@ -78,7 +78,7 @@ def get_nobel1_prize():
 
 @app.route("/api/v0/country")
 def get_country_data():
-    results = db.session.query(country.id, country.firstname, country.surname, country.borncountry, country.borncountrycode,
+    results = db.session.query(country.id, country.firstname, country.surname, country.borncountry, country.borncountry_code,
                                country.borncity, country.gender, country.year, country.category, country.motivation,
                                country.organization_name, country.organization_city, country.organization_country, country.latitude, country.longitude).all()
                                
@@ -88,7 +88,7 @@ def get_country_data():
                 "firstname"       : [result[1] for result in results],
                 "surname"         : [result[2] for result in results],
                 "borncountry"     : [result[3] for result in results],
-                "borncountrycode" : [result[4] for result in results],
+                "borncountry_code" : [result[4] for result in results],
                 "borncity"        : [result[5] for result in results],
                 "gender"          :[result[6] for result in results],
                 "year"            : [result[7] for result in results],
