@@ -25,11 +25,11 @@ var chartGroup = svg.append("g")
 // Initial Xscale Params
 var chosenXAxis = "awardyear";
 // function used for updating x-scale var upon click on axis label
-function xScale(data, chosenXAxis) {
+function xScale(nobelData, chosenXAxis) {
   // create scales
   var xLinearScale = d3.scaleLinear()
-    .domain([d3.min(data, d => d[chosenXAxis]-0.2) ,
-      d3.max(data, d => d[chosenXAxis])
+    .domain([d3.min(nobelData, d => d[chosenXAxis]-0.2) ,
+      d3.max(nobelData, d => d[chosenXAxis])
     ])
     .range([0, width]);
   return xLinearScale;
@@ -162,8 +162,10 @@ function updateToolTipy(chosenYAxis, circlesGroup) {
   return circlesGroup;
 }
 // Retrieve data from the api and execute everything below
-
-d3.json('https://project3nobel.herokuapp.com/api/v0/nobel1_prize').then(function(data) {
+var url ="/api/v0/nobel1_prize";
+d3.json(url,function(nobelData) {
+  // parse data
+  nobelData.forEach(function(data) {
     data.awardyear = +data.awardyear;
     data.prizeamount = +data.prizeamount;
     data.id = + data.id;
@@ -173,10 +175,10 @@ d3.json('https://project3nobel.herokuapp.com/api/v0/nobel1_prize').then(function
   });
      
   // xLinearScale function 
-  var xLinearScale = xScale(data, chosenXAxis);
+  var xLinearScale = xScale(nobelData, chosenXAxis);
   
   // Create y scale function
-  var yLinearScale = yScale(data, chosenYAxis);
+  var yLinearScale = yScale(nobelData, chosenYAxis);
 
   // Create initial axis functions & Create bottom(x) and left(y) axis functions
   var bottomAxis = d3.axisBottom(xLinearScale);
@@ -191,7 +193,7 @@ d3.json('https://project3nobel.herokuapp.com/api/v0/nobel1_prize').then(function
     .call(leftAxis);
   // append initial circles
   var circlesGroup = chartGroup.selectAll("circle")
-    .data(data)
+    .data(nobelData)
     .enter()
     .append("circle")
     .attr("cx", d => xLinearScale(d[chosenXAxis]))
@@ -201,7 +203,7 @@ d3.json('https://project3nobel.herokuapp.com/api/v0/nobel1_prize').then(function
     .attr("opacity", ".9");
 //adding text element inside the circle
 var circlestext = chartGroup.selectAll(".stateText")
-                  .data(data)
+                  .data(nobelData)
                   .enter()
                   .append("text")
                   .classed ("stateText", true)
@@ -254,7 +256,7 @@ var circlestext = chartGroup.selectAll(".stateText")
       if (value !== chosenXAxis) {
         // replaces chosenXAxis with value
         chosenXAxis = value;
-        xLinearScale = xScale(data, chosenXAxis);
+        xLinearScale = xScale(nobelData, chosenXAxis);
         // updates x axis with transition
         xAxis = renderAxes(xLinearScale, xAxis);
         // updates circles with new x values
@@ -303,7 +305,7 @@ var circlestext = chartGroup.selectAll(".stateText")
 
         // functions here found above csv import
         // updates y scale for new data
-        yLinearScale = yScale(data, chosenYAxis);
+        yLinearScale = yScale(nobelData, chosenYAxis);
 
         // updates y axis with transition
         yAxis = renderYAxes(yLinearScale, yAxis);
@@ -336,6 +338,8 @@ var circlestext = chartGroup.selectAll(".stateText")
         }
       }
     
-    }).catch(function(error) {
+    });
+
+  }).catch(function(error) {
     console.log(error);
   });
