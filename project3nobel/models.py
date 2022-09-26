@@ -17,8 +17,8 @@ class nobel1_prize(db.Model):
     laureate_link    = db.Column(db.String(100))
     birth_date       = db.Column(db.String(100))
     birth_citynow    = db.Column(db.String(200))
-    continent        = db.Column(db.String(20))
-    countrynow       = db.Column(db.String(20))
+    birth_continent        = db.Column(db.String(20))
+    birth_countrynow       = db.Column(db.String(20))
     birth_locationstring = db.Column(db.String(100)) 
             
 

@@ -47,8 +47,8 @@ def get_nobel1_prize():
     results = db.session.query(nobel1_prize.awardyear, nobel1_prize.category, nobel1_prize.categoryfullname,
                                nobel1_prize.sortorder, nobel1_prize.prizeamount, nobel1_prize.motivation, 
                                nobel1_prize.award_link, nobel1_prize.id, nobel1_prize.name, nobel1_prize.fullname, nobel1_prize.gender,
-                               nobel1_prize.laureate_link, nobel1_prize.birth_date, nobel1_prize.birth_citynow, nobel1_prize.continent,
-                               nobel1_prize.countrynow, nobel1_prize.birth_locationstring).all()
+                               nobel1_prize.laureate_link, nobel1_prize.birth_date, nobel1_prize.birth_citynow, nobel1_prize.birth_continent,
+                               nobel1_prize.birth_countrynow, nobel1_prize.birth_locationstring).all()
                                
    
              
@@ -67,8 +67,8 @@ def get_nobel1_prize():
                 "laureate_link"    : [result[11] for result in results],
                 "birth_date"       : [result[12] for result in results],
                 "birth_citynow"    : [result[13] for result in results],
-                "continent"        :[result[14] for result in results],
-                "countrynow"       : [result[15] for result in results],
+                "birth_continent"        :[result[14] for result in results],
+                "birth_countrynow"       : [result[15] for result in results],
                 "birth_locationstring" : [result[16] for result in results]
             }
 
