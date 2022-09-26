@@ -121,7 +121,7 @@ import pandas as pd
 import datetime as dt
 import matplotlib.pyplot as plt
 
-df= pd.read_json('http://127.0.0.1:5000/api/v0/nobelprizewinners')
+df= pd.read_json('/api/v0/nobelprizewinners')
 yearly_prize = df.groupby("awardyear")['awardyear'].count().reset_index(name = 'Count')
 fig = px.bar(yearly_prize, x = 'awardyear', y = 'Count')
 
