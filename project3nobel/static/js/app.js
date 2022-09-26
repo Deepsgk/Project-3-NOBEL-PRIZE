@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://api.nobelprize.org/v1/';
+const API_BASE_URL = '/api.nobelprize.org/v1/';
 
   /**
    *
