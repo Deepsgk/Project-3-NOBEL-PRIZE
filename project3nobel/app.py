@@ -1,6 +1,5 @@
 import pandas as pd
 from flask import Flask, jsonify, render_template, request, url_for, redirect
-from requests import session
 import psycopg2
 import sys
 from sqlalchemy import create_engine,SQLAlchemy
@@ -33,7 +32,7 @@ db = SQLAlchemy(app)
 
 @app.route("/")
 def home():
-    return render_template("index.html")  
+    return render_template('index.html')  
 
 from .models import ( nobel1_prize,
                      country )
