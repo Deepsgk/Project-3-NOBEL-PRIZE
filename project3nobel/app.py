@@ -4,8 +4,7 @@ from requests import session
 import psycopg2
 import sys
 from sqlalchemy import create_engine,SQLAlchemy
-from config import pg_pass
-from config import pg_user
+
 import psycopg2
 from flask_cors import CORS, cross_origin
 from flask import Response
@@ -17,12 +16,12 @@ import os
 # Flask Setup
 #################################################
 app = Flask(__name__)
-cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+
 #################################################
 # Database Setup
 #################################################
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or 'postgresql://localhost/[Nobel_prize_db]'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite" 
 
 # Remove tracking modifications
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
