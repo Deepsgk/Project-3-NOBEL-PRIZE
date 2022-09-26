@@ -1,15 +1,19 @@
 import pandas as pd
+import sqlalchemy
+import os
+import numpy as np
+from sqlalchemy.ext.automap import automap_base
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine, func
+import pandas as pd
 from flask import Flask, jsonify, render_template, request, url_for, redirect
-import psycopg2
 import sys
-from sqlalchemy import create_engine,SQLAlchemy
-
 import psycopg2
 from flask_cors import CORS, cross_origin
 from flask import Response
 import json
 import plotly.express as px
-import plotly
+from flask_sqlalchemy import SQLAlchemy
 import os
 #################################################
 # Flask Setup
