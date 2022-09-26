@@ -34,21 +34,8 @@ db = SQLAlchemy(app)
 
 
 @app.route("/")
-def index():
+def home():
     return render_template('index.html')  
-
-# Route for map
-@app.route("/map")
-def map():
-   return render_template("map.html")
-
-@app.route("/d3")
-def d3():
-   return render_template("d3.html")
-
-@app.route("/app")
-def app():
-   return render_template("app.html")
 
 
 from .models import ( nobel1_prize,
@@ -127,9 +114,23 @@ def country():
     return jsonify(list)  
 
 
+# Route for map
+@app.route("/map")
+def map():
+   return render_template("map.html")
+
+@app.route("/d3")
+def d3():
+   return render_template("d3.html")
+
+@app.route("/app1")
+def app1():
+   return render_template("app.html")
+
+
 
 if __name__ == "__main__":
-    app.run()(debug=True)
+    app.run()
   
 
 
