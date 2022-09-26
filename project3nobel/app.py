@@ -37,11 +37,27 @@ db = SQLAlchemy(app)
 @app.route("/")
 def home():
     return render_template('index.html')  
+# Route for map
+@app.route("/map")
+def map():
+   return render_template("map.html")
+
+@app.route("/d3")
+def d3():
+   return render_template("d3.html")
+
+@app.route("/app")
+def app():
+   return render_template("app.html")
+
+@app.route("/p_graph")
+def p_graph():
+   return render_template("p_graph.html")
 
 from .models import ( nobel1_prize,
                      country )
 
-@app.route("/api/v0/nobelprizewinners")
+@app.route("/nobelprizewinners")
 def nobel1_prize():
     results = db.session.query(nobel1_prize.awardyear, nobel1_prize.category, nobel1_prize.categoryfullname,
                                nobel1_prize.sortorder, nobel1_prize.prizeamount, nobel1_prize.motivation, 
@@ -77,7 +93,8 @@ def nobel1_prize():
         list.append(dict)
 
     return jsonify(list)  
-@app.route("/api/v0/country")
+
+@app.route("/country")
 def country():
     results = db.session.query(country.id, country.firstname, country.surname, country.borncountry, country.borncountrycode,
                                country.borncity, country.gender, country.year, country.category, country.motivation,
@@ -118,4 +135,36 @@ if __name__ == "__main__":
     app.run()
 
 
+
+import numpy as py
+import pandas as pd
+import datetime as dt
+import matplotlib.pyplot as plt
+import plotly.express as px
+
+df= pd.read_json('/nobelprizewinners')
+yearly_prize = df.groupby("awardyear")['awardyear'].count().reset_index(name = 'Count')
+fig = px.bar(yearly_prize, x = 'awardyear', y = 'Count')
+
+ 
+
+category = df.groupby('category')['category'].count().reset_index(name='Count')
+fig2 = px.bar(category, x ='category', y ='Count', color='category')
+
+
+fig3 = px.histogram(df, x='prizeamount')
+
+
+fig4 = px.scatter(df, x="prizeamount", y="awardyear", color="category",
+           marginal_x="box", template="simple_white")
+
+
+fig5= px.violin(df,y= "awardyear", x="gender",color="category", box=True)
+
+with open('p_graph.html', 'a') as f:
+    f.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+    f.write(fig2.to_html(full_html=False, include_plotlyjs='cdn'))
+    f.write(fig3.to_html(full_html=False, include_plotlyjs='cdn'))
+    f.write(fig4.to_html(full_html=False, include_plotlyjs='cdn'))
+    f.write(fig5.to_html(full_html=False, include_plotlyjs='cdn'))
 
