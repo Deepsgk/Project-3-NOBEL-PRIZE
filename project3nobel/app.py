@@ -73,7 +73,7 @@ def get_nobel1_prize():
             }
 
 
-    return Response (nobel1_prize_data.to_json(orient="records"), mimetype='application/json')
+    return jsonify(nobel1_prize_data)
 
 
 @app.route("/api/v0/country")
@@ -102,7 +102,7 @@ def get_country_data():
                 
             }
 
-    return Response(country_data.to_json(orient="records"), mimetype='application/json')
+    return jsonify(country_data)
 
     
 
