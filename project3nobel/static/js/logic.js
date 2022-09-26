@@ -118,8 +118,8 @@ var icons = {
 /* 
  * 
  */
-
-d3.json('https://project3nobel.herokuapp.com/api/v0/country').then(
+var url ="/api/v0/country";
+d3.json(url).then(
 data => {
 
   var sites = data;
