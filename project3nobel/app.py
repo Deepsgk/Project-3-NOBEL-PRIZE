@@ -43,18 +43,18 @@ from .models import ( nobel1_prize,
 
 @app.route("/api/v0/nobel1_prize")
 def nobel1_prize():
+    list= []
+    dict ={}
     results = db.session.query(nobel1_prize.awardyear, nobel1_prize.category, nobel1_prize.categoryfullname,
                                nobel1_prize.sortorder, nobel1_prize.prizeamount, nobel1_prize.motivation, 
                                nobel1_prize.award_link, nobel1_prize.id, nobel1_prize.name, nobel1_prize.fullname, nobel1_prize.gender,
                                nobel1_prize.laureate_link, nobel1_prize.birth_date, nobel1_prize.birth_citynow, nobel1_prize.continent,
                                nobel1_prize.countrynow, nobel1_prize.birth_locationstring).all()
                                
-    list= []
-    dict ={}
    
     for i in range(len(results)):
              
-        dict = {
+          dict = {
                 "awardyear"        : results[i][0],
                 "category"         : results[i][1],
                 "categoryfullname" : results[i][2],
@@ -74,7 +74,7 @@ def nobel1_prize():
                 "birth_locationstring" : results[i][16]
             }
 
-        list.append(dict)
+    list.append(dict)
 
     return jsonify(list)  
 
@@ -90,7 +90,7 @@ def country():
    
     for i in range(len(results)):
              
-        dict = {
+          dict = {
                 "id"              : results[i][0],
                 "firstname"       : results[i][1],
                 "surname"         : results[i][2],
@@ -109,7 +109,7 @@ def country():
                 
             }
 
-        list.append(dict)
+    list.append(dict)
 
     return jsonify(list)  
 
