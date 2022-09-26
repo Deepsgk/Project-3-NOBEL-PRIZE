@@ -9,7 +9,6 @@ import pandas as pd
 from flask import Flask, jsonify, render_template, request, url_for, redirect
 import sys
 import psycopg2
-from flask_cors import CORS, cross_origin
 from flask import Response
 import json
 import plotly.express as px
