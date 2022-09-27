@@ -162,15 +162,15 @@ function updateToolTipy(chosenYAxis, circlesGroup) {
   return circlesGroup;
 }
 // Retrieve data from the api and execute everything below
-var url ="/api/v0/nobel1_prize";
+var url ='/api/v0/nobel1_prize';
 d3.json(url,function(nobelData) {
   // parse data
-  nobelData.forEach(function(data) {
-    data.awardyear = +data.awardyear;
-    data.prizeamount = +data.prizeamount;
-    data.id = + data.id;
-    data.birth_continent = data.birth_continent;
-    data.sortorder = + data.sortorder;
+                 nobelData.forEach(function(data) {
+                  data.awardyear = +data.awardyear;
+                  data.prizeamount = +data.prizeamount;
+                   data.id = + data.id;
+                   data.birth_continent = data.birth_continent;
+                    data.sortorder = + data.sortorder;
     
   });
      
