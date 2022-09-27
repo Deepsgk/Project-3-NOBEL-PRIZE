@@ -49,60 +49,70 @@ def get_nobel1_prize():
                                nobel1_prize.award_link, nobel1_prize.id, nobel1_prize.name, nobel1_prize.fullname, nobel1_prize.gender,
                                nobel1_prize.laureate_link, nobel1_prize.birth_date, nobel1_prize.birth_citynow, nobel1_prize.birth_continent,
                                nobel1_prize.birth_countrynow, nobel1_prize.birth_locationstring).all()
-                               
+                                       
+
+    list= []
+    dict ={}
    
+    for i in range(len(results)):
              
-    nobel1_prize_data = {
-                "awardyear"        : [result[0] for result in results],
-                "category"         : [result[1] for result in results],
-                "categoryfullname" : [result[2] for result in results],
-                "sortorder"        :[result[3] for result in results],
-                "prizeamount"      :[result[4] for result in results],
-                "motivation"       :[result[5] for result in results],
-                "award_link"       : [result[6] for result in results],
-                "id"               : [result[7] for result in results],
-                "name"             : [result[8] for result in results],
-                "fullname"         : [result[9] for result in results],
-                "gender"           :[result[10] for result in results],
-                "laureate_link"    : [result[11] for result in results],
-                "birth_date"       : [result[12] for result in results],
-                "birth_citynow"    : [result[13] for result in results],
-                "birth_continent"        :[result[14] for result in results],
-                "birth_countrynow"       : [result[15] for result in results],
-                "birth_locationstring" : [result[16] for result in results]
+        dict = {
+                "awardyear"        : results[i][0],
+                "category"         : results[i][1],
+                "categoryfullname" : results[i][2],
+                "sortorder"        : results[i][3],
+                "prizeamount"      : results[i][4],
+                "motivation"       : results[i][5],
+                "award_link"       : results[i][6],
+                "id"               : results[i][7],
+                "name"             : results[i][8],
+                "fullname"         : results[i][9],
+                "gender"           : results[i][10],
+                "laureate_link"    : results[i][11],
+                "birth_date"       : results[i][12],
+                "birth_citynow"    : results[i][13],
+                "birth_continent"        : results[i][14],
+                "birth_countrynow"       : results[i][15],
+                "birth_locationstring" : results[i][16]
             }
 
+        list.append(dict)
 
-    return jsonify(nobel1_prize_data)
-
-
-@app.route("/api/v0/country", methods = ['GET'])
-def get_country_data():
+        return jsonify(list)
+      
+@app.route("/api/v0/country")
+def Country():
     results = db.session.query(country.id, country.firstname, country.surname, country.borncountry, country.borncountry_code,
                                country.born_city, country.gender, country.year, country.category, country.motivation,
                                country.organization_name, country.organization_city, country.organization_country, country.latitude, country.longitude).all()
                                
-    
-    country_data = {
-                "id"              : [result[0] for result in results],
-                "firstname"       : [result[1] for result in results],
-                "surname"         : [result[2] for result in results],
-                "borncountry"     : [result[3] for result in results],
-                "borncountry_code" : [result[4] for result in results],
-                "born_city"        : [result[5] for result in results],
-                "gender"          :[result[6] for result in results],
-                "year"            : [result[7] for result in results],
-                "category"        : [result[8] for result in results],
-                "motivation"      : [result[9] for result in results],
-                "organization_name" : [result[10] for result in results],
-                "organization_city" : [result[11] for result in results],
-                "organization_country": [result[12] for result in results],
-                "latitude"  :[result[13] for result in results],
-                "longitude"  :[result[14] for result in results]
-    }
+    list= []
+    dict ={}
+   
+    for i in range(len(results)):
+             
+        dict = {
+                "id"              : results[i][0],
+                "firstname"       : results[i][1],
+                "surname"         : results[i][2],
+                "borncountry"     : results[i][3],
+                "borncountry_code" : results[i][4],
+                "borncity"        : results[i][5],
+                "gender"          : results[i][6],
+                "year"            : results[i][7],
+                "category"        : results[i][8],
+                "motivation"      : results[i][9],
+                "organization_name" : results[i][10],
+                "organization_city" : results[i][11],
+                "organization_country": results[i][12],
+                "latitude"  : results[i][13],
+                "longitude"  : results[i][14],
                 
-    return jsonify(country_data)
+            }
 
+        list.append(dict)
+
+    return jsonify(list)  
 
 
 if __name__ == "__main__":
