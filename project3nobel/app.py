@@ -114,9 +114,6 @@ def map():
 def d3():
    return render_template("d3.html")
 
-@app.route("/app1")
-def app1():
-   return render_template("app.html")
 
 
 
