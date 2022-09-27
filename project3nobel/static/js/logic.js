@@ -27,7 +27,7 @@ var chosenXAxis = "awardyear";
 function xScale(nobelData, chosenXAxis) {
   // create scales
   var xLinearScale = d3.scaleLinear()
-    .domain([d3.min(nobelData, d => d[chosenXAxis]) ,
+    .domain([d3.min(nobelData, d => d[chosenXAxis]-1) ,
       d3.max(nobelData, d => d[chosenXAxis])
     ])
     .range([0, width]);
@@ -56,7 +56,7 @@ var chosenYAxis = "prizeamount";
 function yScale(nobelData, chosenYAxis) {
   // create scales
   var yLinearScale = d3.scaleLinear()
-    .domain([d3.min(nobelData, d => d[chosenYAxis]) ,
+    .domain([d3.min(nobelData, d => d[chosenYAxis]-1) ,
       d3.max(nobelData, d => d[chosenYAxis])
     ])
     .range([height, 0]);
