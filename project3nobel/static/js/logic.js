@@ -1,11 +1,10 @@
-
 var layers = {
-  PHYSICS: new L.LayerGroup(),
-  CHEMISTRY: new L.LayerGroup(),
-  LITERATURE: new L.LayerGroup(),
-  PEACE: new L.LayerGroup(),
-  ECONOMICS: new L.LayerGroup(),
-  MEDICINE: new L.LayerGroup()
+    PHYSICS: new L.LayerGroup(),
+    CHEMISTRY: new L.LayerGroup(),
+    LITERATURE: new L.LayerGroup(),
+    PEACE: new L.LayerGroup(),
+    ECONOMICS: new L.LayerGroup(),
+    MEDICINE: new L.LayerGroup()
 
   }
   
@@ -113,11 +112,11 @@ var icons = {
 };
 
 
-
-
 /* 
  * 
  */
+
+
 var url ="/api/v0/country";
 d3.json(url).then(
 data => {
