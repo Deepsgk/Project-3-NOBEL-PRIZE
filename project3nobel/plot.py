@@ -51,3 +51,6 @@ def p_gragh():
       f.write(fig5.to_html(full_html=False, include_plotlyjs='cdn'))
 
       return render_template("p_graph.html")
+  if __name__ == "__main__":
+    app.run()
+  
