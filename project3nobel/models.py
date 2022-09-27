@@ -10,7 +10,7 @@ class nobel1_prize(db.Model):
     prizeamount      = db.Column(db.Integer) 
     motivation       = db.Column(db.String(1000))
     award_link       = db.Column(db.String(100))
-    id               = db.Column(db.Integer, primary_key=True)
+    id               = db.Column(db.Integer)
     name             = db.Column(db.String(50))
     fullname         = db.Column(db.String(100))
     gender           = db.Column(db.String(20))
@@ -31,7 +31,7 @@ class country(db.Model):
     __tablename__ = 'country'
 
      
-    id               = db.Column(db.Integer, primary_key=True) 
+    id               = db.Column(db.Integer) 
     firstname        = db.Column(db.String(100))
     surname          = db.Column(db.String(200))
     borncountry      = db.Column(db.String(100)) 
