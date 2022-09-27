@@ -10,7 +10,7 @@ from flask import Flask, jsonify, render_template, request, url_for, redirect
 import sys
 import psycopg2
 from flask import Response
-import json
+import json 
 import plotly.express as px
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -76,7 +76,7 @@ def get_nobel1_prize():
     return jsonify(nobel1_prize_data)
 
 
-@app.route("/api/v0/country")
+@app.route("/api/v0/country", methods = ['GET'])
 def get_country_data():
     results = db.session.query(country.id, country.firstname, country.surname, country.borncountry, country.borncountry_code,
                                country.born_city, country.gender, country.year, country.category, country.motivation,
@@ -99,12 +99,10 @@ def get_country_data():
                 "organization_country": [result[12] for result in results],
                 "latitude"  :[result[13] for result in results],
                 "longitude"  :[result[14] for result in results]
+    }
                 
-            }
-
     return jsonify(country_data)
 
-    
 
 
 # Route for map
