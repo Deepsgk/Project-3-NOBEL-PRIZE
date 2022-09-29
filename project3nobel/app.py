@@ -97,7 +97,7 @@ def Country():
                 "surname"         : results[i][2],
                 "borncountry"     : results[i][3],
                 "borncountry_code" : results[i][4],
-                "borncity"        : results[i][5],
+                "born_city"        : results[i][5],
                 "gender"          : results[i][6],
                 "year"            : results[i][7],
                 "category"        : results[i][8],

@@ -345,6 +345,11 @@ var circlestext = chartGroup.selectAll(".stateText")
   });
 
 
+
+
+
+  //MAP
+
   var layers = {
     PHYSICS: new L.LayerGroup(),
     CHEMISTRY: new L.LayerGroup(),
