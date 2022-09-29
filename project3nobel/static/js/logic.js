@@ -407,7 +407,7 @@ var circlestext = chartGroup.selectAll(".stateText")
           center: [
             38.8951,-77.0364,
           ],
-          zoom: 3,
+          zoom: 4,
           layers: [
             lightmap, 
             sites      
