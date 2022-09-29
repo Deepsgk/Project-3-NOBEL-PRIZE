@@ -470,8 +470,8 @@ var circlestext = chartGroup.selectAll(".stateText")
    * 
    */
   
-  cost url= '/api/v0/country'
-  d3.json(url).then(
+  const mapurl= '/api/v0/country'
+  d3.json(mapurl).then(
   data => {
   
     var sites = data;
