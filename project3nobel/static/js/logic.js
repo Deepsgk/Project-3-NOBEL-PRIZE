@@ -468,7 +468,7 @@ var circlestext = chartGroup.selectAll(".stateText")
    * 
    */
   
-  const mapurl= '/api/v0/country'
+  const mapurl= '/api/v0/country';
   d3.json(mapurl).then(
   data => {
   
