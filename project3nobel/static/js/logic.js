@@ -404,8 +404,8 @@ var circlestext = chartGroup.selectAll(".stateText")
     
           // Create the map object with options
         var map = L.map("map", {
-          center: [40,-78],
-          zoom: 2,
+          center: [37.09,-95.7129],
+          zoom: 4,
           layers: [
             lightmap, 
             sites      
