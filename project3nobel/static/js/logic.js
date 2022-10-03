@@ -56,7 +56,7 @@
     
           // Create the map object with options
         var map = L.map("map", {
-          center: [37.09,-95.7129],
+          center: [48,-100],
           zoom: 4,
           layers: [
             lightmap, 
